@@ -1,0 +1,525 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Colors - TeamElevateX Brand */
+    --background: 0 0% 100%;
+    --foreground: 215 16% 17%;
+    --card: 0 0% 100%;
+    --card-foreground: 215 16% 17%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 215 16% 17%;
+    --primary: 215 16% 17%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 218 16% 96%;
+    --secondary-foreground: 215 16% 17%;
+    --muted: 218 16% 96%;
+    --muted-foreground: 215 8% 46%;
+    --accent: 199 89% 48%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 218 16% 90%;
+    --input: 218 16% 90%;
+    --ring: 199 89% 48%;
+
+    /* Charts */
+    --chart-1: 199 89% 48%;
+    --chart-2: 215 16% 17%;
+    --chart-3: 120 60% 45%;
+    --chart-4: 45 93% 47%;
+    --chart-5: 300 47% 60%;
+
+    /* Sidebar */
+    --sidebar: 218 16% 96%;
+    --sidebar-foreground: 215 16% 17%;
+    --sidebar-primary: 215 16% 17%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 199 89% 48%;
+    --sidebar-accent-foreground: 0 0% 100%;
+    --sidebar-border: 218 16% 90%;
+    --sidebar-ring: 199 89% 48%;
+
+    /* Fonts */
+    --font-sans: Poppins, sans-serif;
+    --font-serif: Poppins, serif;
+    --font-mono: monospace;
+
+    /* Shadows */
+    --shadow-2xs: 0px 4px 8px -1px hsl(0 0% 0% / 0.05);
+    --shadow-xs: 0px 4px 8px -1px hsl(0 0% 0% / 0.05);
+    --shadow-sm: 0px 4px 8px -1px hsl(0 0% 0% / 0.10), 0px 1px 2px -2px hsl(0 0% 0% / 0.10);
+    --shadow: 0px 4px 8px -1px hsl(0 0% 0% / 0.10), 0px 1px 2px -2px hsl(0 0% 0% / 0.10);
+    --shadow-md: 0px 4px 8px -1px hsl(0 0% 0% / 0.10), 0px 2px 4px -2px hsl(0 0% 0% / 0.10);
+    --shadow-lg: 0px 4px 8px -1px hsl(0 0% 0% / 0.10), 0px 4px 6px -2px hsl(0 0% 0% / 0.10);
+    --shadow-xl: 0px 4px 8px -1px hsl(0 0% 0% / 0.10), 0px 8px 10px -2px hsl(0 0% 0% / 0.10);
+    --shadow-2xl: 0px 4px 8px -1px hsl(0 0% 0% / 0.25);
+
+    /* Misc */
+    --tracking-normal: 0em;
+    --spacing: 0.25rem;
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    --background: 215 28% 8%;
+    --foreground: 210 20% 98%;
+    --card: 215 28% 10%;
+    --card-foreground: 210 20% 98%;
+    --popover: 215 28% 10%;
+    --popover-foreground: 210 20% 98%;
+    --primary: 199 89% 48%;
+    --primary-foreground: 215 28% 8%;
+    --secondary: 215 25% 14%;
+    --secondary-foreground: 210 20% 85%;
+    --muted: 215 25% 14%;
+    --muted-foreground: 215 8% 55%;
+    --accent: 120 60% 45%;
+    --accent-foreground: 215 28% 8%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 210 20% 98%;
+    --border: 215 20% 20%;
+    --input: 215 20% 20%;
+    --ring: 199 89% 48%;
+
+    --chart-1: 199 89% 48%;
+    --chart-2: 215 16% 17%;
+    --chart-3: 120 60% 45%;
+    --chart-4: 45 93% 47%;
+    --chart-5: 300 47% 60%;
+
+    --sidebar: 215 28% 10%;
+    --sidebar-foreground: 210 20% 98%;
+    --sidebar-primary: 199 89% 48%;
+    --sidebar-primary-foreground: 215 28% 8%;
+    --sidebar-accent: 120 60% 45%;
+    --sidebar-accent-foreground: 215 28% 8%;
+    --sidebar-border: 215 20% 20%;
+    --sidebar-ring: 199 89% 48%;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: var(--font-sans), 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+    letter-spacing: var(--tracking-normal);
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Custom animations for TeamElevateX */
+@keyframes grid-move {
+  0% { transform: translateX(-100px) translateY(-100px); }
+  100% { transform: translateX(100px) translateY(100px); }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-20px); }
+}
+
+@keyframes glow {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.6; }
+}
+
+.animate-grid-move {
+  animation: grid-move 20s infinite linear;
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.animate-glow {
+  animation: glow 2s ease-in-out infinite;
+}
+
+/* Smooth scroll reveal */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s ease-out;
+}
+
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+/* Simple Dark Grid Animations */
+@keyframes simple-grid-move {
+  0% { transform: translate(0, 0); }
+  100% { transform: translate(-60px, -60px); }
+}
+
+@keyframes simple-float {
+  0%, 100% { 
+    transform: translateY(0px); 
+    opacity: 0.6;
+  }
+  50% { 
+    transform: translateY(-20px); 
+    opacity: 1;
+  }
+}
+
+@keyframes simple-glow {
+  0%, 100% { 
+    opacity: 0.4;
+    transform: scale(1);
+  }
+  50% { 
+    opacity: 0.8;
+    transform: scale(1.2);
+  }
+}
+
+@keyframes text-glow {
+  0%, 100% { 
+    background-position: 0% 50%;
+  }
+  50% { 
+    background-position: 100% 50%;
+  }
+}
+
+@keyframes fade-in-dark {
+  from { 
+    opacity: 0; 
+    transform: translateY(20px); 
+  }
+  to { 
+    opacity: 1; 
+    transform: translateY(0); 
+  }
+}
+
+@keyframes slide-up-dark {
+  from { 
+    opacity: 0; 
+    transform: translateY(30px); 
+  }
+  to { 
+    opacity: 1; 
+    transform: translateY(0); 
+  }
+}
+
+/* Animation Classes */
+.animate-simple-float {
+  animation: simple-float 6s ease-in-out infinite;
+}
+
+.animate-simple-glow {
+  animation: simple-glow 3s ease-in-out infinite;
+}
+
+.animate-text-glow {
+  animation: text-glow 4s ease-in-out infinite;
+  background-size: 200% 200%;
+}
+
+.animate-fade-in-dark {
+  animation: fade-in-dark 1s ease-out 0.2s forwards;
+  opacity: 0;
+}
+
+.animate-slide-up-dark {
+  animation: slide-up-dark 1s ease-out 0.4s forwards;
+  opacity: 0;
+}
+
+/* Utility Classes */
+.bg-size-200 {
+  background-size: 200% 200%;
+}
+
+.shadow-cyan-glow {
+  box-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
+}
+
+/* Reveal animation */
+.reveal {
+  opacity: 0;
+  transform: translateY(50px);
+  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Innovation Section Animations */
+@keyframes scroll-right {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes scroll-left {
+  0% {
+    transform: translateX(-50%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+.animate-scroll-right {
+  animation: scroll-right 30s linear infinite;
+}
+
+.animate-scroll-left {
+  animation: scroll-left 30s linear infinite;
+}
+
+/* Team Section Animations */
+@keyframes card-glow {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(168, 85, 247, 0.1);
+  }
+  50% {
+    box-shadow: 0 0 30px rgba(168, 85, 247, 0.2), 0 0 60px rgba(168, 85, 247, 0.1);
+  }
+}
+
+@keyframes float-gentle {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes pulse-glow {
+  0%, 100% {
+    opacity: 0.3;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.6;
+    transform: scale(1.1);
+  }
+}
+
+@keyframes fade-in-up-team {
+  from {
+    opacity: 0;
+    transform: translateY(40px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes gradient-shift-team {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+/* Animation Classes */
+.card-glow {
+  animation: card-glow 4s ease-in-out infinite;
+}
+
+.animate-float-gentle {
+  animation: float-gentle 6s ease-in-out infinite;
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 3s ease-in-out infinite;
+}
+
+.animate-fade-in {
+  animation: fade-in-up-team 1s ease-out 0.2s forwards;
+  opacity: 0;
+}
+
+/* Hover Effects */
+.group:hover .card-glow {
+  animation-duration: 2s;
+}
+
+/* Reveal Animation */
+.reveal {
+  opacity: 0;
+  transform: translateY(60px);
+  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .grid-cols-1.md\\:grid-cols-3 {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  .grid-cols-1.md\\:grid-cols-3 {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+  
+  .grid-cols-1.md\\:grid-cols-3 > :last-child {
+    grid-column: 1 / -1;
+    max-width: 50%;
+    margin: 0 auto;
+  }
+}
+
+
+/* i have add new  */
+/* Grid Animation Keyframes */
+@keyframes slideGrid {
+  0% { 
+    background-position: 0 0; 
+  }
+  100% { 
+    background-position: 50px 50px; 
+  }
+}
+
+@keyframes slideGridReverse {
+  0% { 
+    background-position: 0 0; 
+  }
+  100% { 
+    background-position: -30px -30px; 
+  }
+}
+
+@keyframes pulseGrid {
+  0%, 100% { 
+    opacity: 0.15;
+    transform: scale(1);
+  }
+  50% { 
+    opacity: 0.3;
+    transform: scale(1.05);
+  }
+}
+
+@keyframes pulseGridSub {
+  0%, 100% { 
+    opacity: 0.1;
+  }
+  50% { 
+    opacity: 0.2;
+  }
+}
+
+@keyframes moveDiagonal {
+  0% { 
+    background-position: 0 0; 
+  }
+  100% { 
+    background-position: 40px 40px; 
+  }
+}
+
+@keyframes moveDiagonalReverse {
+  0% { 
+    background-position: 0 0; 
+  }
+  100% { 
+    background-position: -25px -25px; 
+  }
+}
+
+@keyframes zoomGrid {
+  0%, 100% { 
+    background-size: 40px 40px;
+    opacity: 0.2;
+  }
+  50% { 
+    background-size: 80px 80px;
+    opacity: 0.3;
+  }
+}
+
+@keyframes zoomGridReverse {
+  0%, 100% { 
+    background-size: 80px 80px;
+    opacity: 0.15;
+  }
+  50% { 
+    background-size: 40px 40px;
+    opacity: 0.25;
+  }
+}
+
+@keyframes glitchGrid {
+  0%, 90%, 100% { 
+    background-position: 0 0;
+    opacity: 0.25;
+  }
+  5% { 
+    background-position: 2px 0;
+    opacity: 0.4;
+  }
+  10% { 
+    background-position: -2px 0;
+    opacity: 0.3;
+  }
+  15% { 
+    background-position: 0 2px;
+    opacity: 0.35;
+  }
+  20% { 
+    background-position: 0 -2px;
+    opacity: 0.25;
+  }
+}
+
+@keyframes glitchGridOffset {
+  0%, 85%, 100% { 
+    background-position: 0 0;
+    opacity: 0.15;
+  }
+  10% { 
+    background-position: -1px 1px;
+    opacity: 0.3;
+  }
+  20% { 
+    background-position: 1px -1px;
+    opacity: 0.25;
+  }
+}
+ /* Still here tak */
